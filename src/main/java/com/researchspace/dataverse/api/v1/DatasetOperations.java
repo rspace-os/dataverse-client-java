@@ -78,22 +78,6 @@ public interface DatasetOperations {
 	DatasetFileList uploadNativeFile(InputStream data, long contentLength, FileUploadMetadata metadata,
 									 Identifier dsIdentifier,  String fileName);
 
-    /**
-	 * Uploads a file to a dataset
-	 * @param doi The DOI of the  Dataset
-	 * @param file The file to add to the DataSet
-	 */
-	void uploadFile(String doi, File file, String protocol);
-
-	/**
-	 * Uploads a file using a data stream.
-	 *
-	 * @param doi Identifier of the dataset that we are sending the data to.
-	 * @param inputStream Stream of data to upload as a file in Dataverse.
-	 * @param filename Contents of the field "name" that will appear as in Dataverse.
-	 */
-	void uploadFile(String doi, InputStream inputStream, String filename, String protocol);
-
 	/**
 	 * Deletes a {@link Dataset}  
 	 * @param dsIdentifier

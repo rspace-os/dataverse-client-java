@@ -13,9 +13,6 @@ It is built and tested on Java 11 and Java 17.
 
 It also uses Spring-web (to provide low-level HTTP request/response parsing.) 
 
-The Sword client library is included in this project as a jar file, as it is not available
- in a public maven repository.
-
 ### Gradle 
 
 This project is built using Gradle. You can build straight away without needing to install anything:
@@ -140,4 +137,3 @@ Native|Datasets | POST `api/dataverses/$id` | Y| -
 Native|MetadataBlocks | GET ` api/metadatablocks` | Y| -
 | -   | -         | GET ` api/metadatablocks/$identifier` | Y| -
 Search | - | GET `api/search` | In progress | All query params supported, optional data not returned yet.
-Sword | Upload file | 'Add files to a dataset with a zip file' | Y | -
