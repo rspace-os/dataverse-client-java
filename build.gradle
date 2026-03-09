@@ -1,10 +1,11 @@
 apply plugin: 'java'
 
-group = 'com.researchspace'
+group = 'com.github.iqss'
 sourceCompatibility = 1.8
-version = '1.4.0'
+version = 'v1.4.2'
 def springVersion='5.3.24'
-def jacksonVersion='2.11.1'
+def jacksonVersion='2.20.0'
+def jacksonAnnotationsVersion='2.20'
 def lombokVersion='1.18.24'
 
 repositories {
@@ -31,15 +32,15 @@ dependencies {
     implementation 'org.springframework:spring-web:'+springVersion
     implementation 'org.springframework:spring-context:'+springVersion
     implementation 'org.springframework:spring-core:'+springVersion
-    implementation 'com.fasterxml.jackson.core:jackson-annotations:'+jacksonVersion
+    implementation 'com.fasterxml.jackson.core:jackson-annotations:'+jacksonAnnotationsVersion
     implementation 'com.fasterxml.jackson.core:jackson-core:'+jacksonVersion
     implementation 'com.fasterxml.jackson.core:jackson-databind:'+jacksonVersion
+    implementation 'com.fasterxml.jackson.datatype:jackson-datatype-jdk8:'+jacksonVersion
+
 
     implementation 'org.projectlombok:lombok:' + lombokVersion
     annotationProcessor 'org.projectlombok:lombok:' + lombokVersion
     implementation 'org.apache.commons:commons-lang3:3.12.0'
-    implementation 'commons-lang:commons-lang:2.6'
-    implementation 'commons-io:commons-io:2.11.0'
     implementation 'org.slf4j:slf4j-api:1.7.21'
  
     testImplementation   'junit:junit:4.13.2'
@@ -73,4 +74,15 @@ task listJars {
     doLast {
         configurations.compile.each { File file -> println file.name }
     }
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            groupId = 'com.github.iqss'
+            artifactId = 'dataverse-client-java'
+
+            from components.java
+        }
+    }
+}
 }
