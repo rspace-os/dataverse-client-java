@@ -56,9 +56,9 @@ If using Maven, add this to your pom.xml file (thanks AleixMT).
 
 <dependencies>
   <dependency>
-    <groupId>com.github.iqss</groupId>
+    <groupId>com.github.rspace-os</groupId>
     <artifactId>dataverse-client-java</artifactId>
-    <version>v1.4.2</version>
+    <version>v2.0.0</version>
   </dependency>
 </dependencies>`
 ```

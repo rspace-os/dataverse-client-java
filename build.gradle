@@ -79,15 +79,15 @@ task listJars {
     doLast {
         configurations.compile.each { File file -> println file.name }
     }
+}
 
 publishing {
     publications {
         maven(MavenPublication) {
-            groupId = 'com.github.iqss'
+            groupId = 'com.github.rspace-os'
             artifactId = 'dataverse-client-java'
 
             from components.java
         }
     }
-}
 }
