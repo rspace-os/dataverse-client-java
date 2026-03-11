@@ -3,6 +3,9 @@
 This project is a Java wrapper around the [Dataverse  API](http://guides.dataverse.org/en/4.2/api/).  
 It was initially contributed by [ResearchSpace](www.researchspace.com) in October 2016.
 
+## Version 2
+Version 2 removes the SWORD protocol as an upload mechanism. If you make use of SWORD, you can still use version 1.4.2, which is available on JitPack.
+
 ## Building 
 
 ### Dependencies 
