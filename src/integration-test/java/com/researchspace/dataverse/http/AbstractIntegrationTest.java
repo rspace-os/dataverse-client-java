@@ -46,11 +46,11 @@ public class AbstractIntegrationTest extends AbstractJUnit4SpringContextTests {
 	SearchOperations searchOps;
 	@Autowired
 	DataverseAPI dataverseAPI;
-	@Value("${dataverseAlias}")
+	@Value("#{systemProperties['dataverseAlias']}")
 	protected String dataverseAlias;
-	@Value("${dataverseApiKey}")
+	@Value("#{systemProperties['dataverseApiKey']}")
 	protected String apiKey;
-	@Value("${dataverseServerURL}")
+	@Value("#{systemProperties['dataverseServerURL']}")
 	protected String serverURL;
 
 	// defaults from test.properties
