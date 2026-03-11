@@ -4,7 +4,7 @@ plugins {
 
 apply plugin: 'java'
 
-group = 'com.github.iqss'
+group = 'com.github.rspace-os'
 sourceCompatibility = 1.8
 version = 'v2.0.0'
 def springVersion='5.3.24'
