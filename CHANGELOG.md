@@ -1,5 +1,8 @@
 Significant changes since 0.1.0
 
+2.0.0 2026-03-09
+- feature: remove SWORD protocol dependency and upload option
+
 1.4.2 2026-02-25
 
 - feature: Add `OtherReferences` field when building Dataset

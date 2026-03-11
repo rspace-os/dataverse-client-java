@@ -8,7 +8,7 @@ import com.researchspace.dataverse.entities.facade.DatasetFacade;
 import com.researchspace.dataverse.entities.facade.License;
 
 import org.apache.commons.io.FileUtils;
-import org.apache.commons.lang.RandomStringUtils;
+import org.apache.commons.lang3.RandomStringUtils;
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;

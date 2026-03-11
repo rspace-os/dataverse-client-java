@@ -57,7 +57,7 @@ public interface DatasetOperations {
 	List<DatasetVersion> getDatasetVersions(Identifier dsIdentifier);
 
 	/**
-	 * Upload a file to a dataset using Dataverse's native API (not Sword)
+	 * Upload a file to a dataset using Dataverse's native API.
 	 * @param metadata Metadata to attach to the file upload
 	 * @param dsIdentifier The persistent identifier of the dataset
 	 * @param data bytes of data to upload
@@ -67,7 +67,7 @@ public interface DatasetOperations {
     DatasetFileList uploadNativeFile( byte[] data, FileUploadMetadata metadata, Identifier dsIdentifier, String fileName);
 
 	/**
-	 * Upload a file to a dataset using Dataverse's native API (not Sword).
+	 * Upload a file to a dataset using Dataverse's native API.
 	 * @param metadata Metadata to attach to the file upload
 	 * @param contentLength The length of the stream
 	 * @param dsIdentifier The persistent identifier of the dataset
