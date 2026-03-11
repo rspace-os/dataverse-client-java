@@ -15,10 +15,13 @@ import org.junit.Test;
 
 import java.io.ByteArrayInputStream;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
 import java.util.Arrays;
 import java.util.List;
 
@@ -129,6 +132,9 @@ public class DatasetOperationsTest extends AbstractIntegrationTest {
 		assertNotNull(datasetId.getId());
 		assertNotNull(datasetId.getPersistentId());
 		Dataset ds = datasetOps.getDataset(datasetId);
+		String fullPersistentId = ds.getProtocol() + ":" + ds.getDoiId().get();
+		Identifier dsIdentifier = new Identifier(ds.getId(), fullPersistentId);
+		datasetOps.uploadNativeFile(Files.newInputStream(getTestFile().toPath()), getTestFile().length(), getUploadMetadata(), dsIdentifier, getTestFile().getName());
 
 		//publishing will fail, as parent DV is not published
 		DataverseResponse<PublishedDataset> response = datasetOps.publishDataset (datasetId, Version.MAJOR);
