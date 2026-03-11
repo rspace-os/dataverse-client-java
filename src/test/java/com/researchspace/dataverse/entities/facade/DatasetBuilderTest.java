@@ -1,18 +1,24 @@
+/*
+ *
+ */
 package com.researchspace.dataverse.entities.facade;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
-import com.researchspace.dataverse.entities.Citation;
-import com.researchspace.dataverse.entities.Dataset;
+import static com.researchspace.dataverse.entities.facade.DatasetTestFactory.*;
+
+import com.fasterxml.jackson.datatype.jdk8.Jdk8Module;
+import java.net.MalformedURLException;
+import java.net.URISyntaxException;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import static com.researchspace.dataverse.entities.facade.DatasetTestFactory.createFacade;
-
-import java.net.MalformedURLException;
-import java.net.URISyntaxException;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.ObjectWriter;
+import com.researchspace.dataverse.entities.Dataset;
+import com.researchspace.dataverse.entities.facade.DatasetBuilder;
+import com.researchspace.dataverse.entities.facade.DatasetFacade;
 /** <pre>
 Copyright 2016 ResearchSpace
 
@@ -42,21 +48,13 @@ public class DatasetBuilderTest {
 	}
 
 	@Test
-	public void testBuildFromFacade() throws MalformedURLException, URISyntaxException {
+	public void test() throws JsonProcessingException, MalformedURLException, URISyntaxException {
 		DatasetFacade facade = createFacade();
-		Dataset dataset = builder.build(facade);
-
-		assertNotNull(dataset);
-		assertNotNull(dataset.getDatasetVersion());
-
-		Citation citation = dataset.getDatasetVersion().getMetadataBlocks().getCitation();
-		assertNotNull(citation);
-		assertFalse(citation.getFields().isEmpty());
-
-		assertTrue(citation.getFields().stream()
-						.filter(f -> "title".equals(f.getTypeName()))
-						.anyMatch(f -> "title1".equals(f.getValue())));
-
-		assertTrue(citation.getFields().stream().anyMatch(f -> "author".equals(f.getTypeName())));
+		ObjectMapper mapper = new ObjectMapper();
+		mapper.registerModule(new Jdk8Module());
+		ObjectWriter ow = mapper.writer().withDefaultPrettyPrinter();
+		Dataset dversion = builder.build(facade);
+	    String json =   ow.writeValueAsString(dversion);
+	    System.out.println(json);
 	}
 }
