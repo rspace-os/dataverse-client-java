@@ -1,14 +1,15 @@
 package com.researchspace.dataverse.entities.facade;
 
-import static org.junit.Assert.*;
-
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 import com.researchspace.dataverse.entities.Citation;
 import com.researchspace.dataverse.entities.Dataset;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import static com.researchspace.dataverse.entities.facade.DatasetTestFactory.*;
+import static com.researchspace.dataverse.entities.facade.DatasetTestFactory.createFacade;
 
 import java.net.MalformedURLException;
 import java.net.URISyntaxException;
