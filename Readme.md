@@ -3,6 +3,11 @@
 This project is a Java wrapper around the [Dataverse  API](http://guides.dataverse.org/en/4.2/api/).  
 It was initially contributed by [ResearchSpace](www.researchspace.com) in October 2016.
 
+## Version 2
+Version 2 removes the SWORD protocol as an upload mechanism. 
+
+If you make use of SWORD, you can still use version 1.X, which is available on JitPack or buildable via git history.
+
 ## Building 
 
 ### Dependencies 
@@ -12,9 +17,6 @@ This project requires Java 8 minimum to compile and run.
 It is built and tested on Java 11 and Java 17.
 
 It also uses Spring-web (to provide low-level HTTP request/response parsing.) 
-
-The Sword client library is included in this project as a jar file, as it is not available
- in a public maven repository.
 
 ### Gradle 
 
@@ -59,9 +61,9 @@ If using Maven, add this to your pom.xml file (thanks AleixMT).
 
 <dependencies>
   <dependency>
-    <groupId>com.github.iqss</groupId>
+    <groupId>com.github.rspace-os</groupId>
     <artifactId>dataverse-client-java</artifactId>
-    <version>v1.4.2</version>
+    <version>v2.0.0</version>
   </dependency>
 </dependencies>`
 ```
@@ -143,4 +145,3 @@ Native|Datasets | POST `api/dataverses/$id` | Y| -
 Native|MetadataBlocks | GET ` api/metadatablocks` | Y| -
 | -   | -         | GET ` api/metadatablocks/$identifier` | Y| -
 Search | - | GET `api/search` | In progress | All query params supported, optional data not returned yet.
-Sword | Upload file | 'Add files to a dataset with a zip file' | Y | -

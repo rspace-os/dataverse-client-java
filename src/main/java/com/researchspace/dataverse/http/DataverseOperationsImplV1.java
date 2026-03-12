@@ -13,7 +13,6 @@ import com.researchspace.dataverse.api.v1.MetadataOperations;
 import com.researchspace.dataverse.entities.*;
 import com.researchspace.dataverse.entities.facade.DatasetBuilder;
 import com.researchspace.dataverse.entities.facade.DatasetFacade;
-import com.researchspace.dataverse.sword.FileUploader;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.core.ParameterizedTypeReference;
@@ -26,9 +25,6 @@ import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestClientException;
-import org.swordapp.client.ProtocolViolationException;
-import org.swordapp.client.SWORDClientException;
-import org.swordapp.client.SWORDError;
 
 import java.io.*;
 import java.net.URI;
@@ -232,35 +228,6 @@ public class DataverseOperationsImplV1 extends AbstractOpsImplV1 implements Data
 		log.debug("{}", resp.getBody());
 		handleError(resp);
 		return resp.getBody().getData();
-	}
-
-	/* (non-Javadoc)
-	 * @see com.researchspace.dataverse.http.DataverseAPI#uploadFile(java.lang.String, java.io.File)
-	 */
-	@Override
-	public void uploadFile (String doi, File file, String protocol) {
-		try {
-			this.uploadFile(doi, new FileInputStream(file), file.getName(), protocol);
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		}
-	}
-
-	@Override
-	public void uploadFile(String doi, InputStream file, String filename, String protocol) {
-		FileUploader uploader = new FileUploader();
-		try {
-			uploader.deposit(file, filename, apiKey, new URI(serverURL), doi, protocol);
-		} catch (IOException | SWORDClientException  | ProtocolViolationException | URISyntaxException e) {
-			log.error("Couldn't upload file {} with {} {} : {}", filename, protocol, doi.toString(), e.getMessage());
-			throw new RestClientException(e.getMessage());
-		} catch (SWORDError error) {
-			if (!StringUtils.isEmpty(error.getErrorBody())) {
-				log.error("SwordError: {}", error.getErrorBody());
-				throw new RestClientException(error.getErrorBody());
-			}
-		}
-
 	}
 
 	/* (non-Javadoc)

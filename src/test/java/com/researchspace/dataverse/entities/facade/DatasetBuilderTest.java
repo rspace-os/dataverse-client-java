@@ -1,5 +1,5 @@
 /*
- * 
+ *
  */
 package com.researchspace.dataverse.entities.facade;
 
@@ -55,6 +55,6 @@ public class DatasetBuilderTest {
 		ObjectWriter ow = mapper.writer().withDefaultPrettyPrinter();
 		Dataset dversion = builder.build(facade);
 	    String json =   ow.writeValueAsString(dversion);
-	    System.out.println(json);		
+	    System.out.println(json);
 	}
 }

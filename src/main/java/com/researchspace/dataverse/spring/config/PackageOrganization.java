@@ -23,18 +23,14 @@ limitations under the License.
   skinparam componentStyle uml2
   title Dataverse integration package relations
   
-   [external Sword lib] #green
    [spring-rest] #green
    [c.r.d.api1] -up-> [c.r.d.entities / facade]
    note right : model classes for \n JSON objects
    [c.r.d.http] -up-> [c.r.d.api1]
-   [c.r.d.http] -up-> [c.r.d.sword]
    [c.r.d.http] --up--> [spring-rest]
    [c.r.d.http] -up-> [c.r.d.springrest.ext]
    [c.r.d.springCfg] -up-> [c.r.d.api1]
    [c.r.d.springCfg] -up-> [c.r.d.http]
-   [c.r.d.sword] -up-> [external Sword lib]
-    note right: external
     note right of [spring-rest]
      Spring
      end note
