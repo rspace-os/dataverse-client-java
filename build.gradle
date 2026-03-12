@@ -5,12 +5,13 @@ plugins {
 apply plugin: 'java'
 
 group = 'com.github.rspace-os'
-sourceCompatibility = 1.8
-version = 'v2.0.0'
-def springVersion='5.3.24'
+sourceCompatibility = 17
+targetCompatibility = 17
+version = 'v3.0.0'
+def springVersion='6.2.15'
 def jacksonVersion='2.20.0'
 def jacksonAnnotationsVersion='2.20'
-def lombokVersion='1.18.24'
+def lombokVersion='1.18.42'
 
 repositories {
     mavenCentral()  
