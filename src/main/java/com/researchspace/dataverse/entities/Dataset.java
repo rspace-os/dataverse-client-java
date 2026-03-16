@@ -1,6 +1,3 @@
-/*
- * 
- */
 package com.researchspace.dataverse.entities;
 
 import java.net.URL;
@@ -26,9 +23,10 @@ Copyright 2016 ResearchSpace
 </pre>
 */
 @Data
-@AllArgsConstructor()
-@NoArgsConstructor()
+@AllArgsConstructor
+@NoArgsConstructor
 public class Dataset {
+
 	private DatasetVersion datasetVersion, latestVersion;
 	private Long id;
 	private String identifier, protocol, authority;
@@ -36,14 +34,16 @@ public class Dataset {
 	private String metadataLanguage;
 	
 	/**
-	 * Getter for the DOI String or other persistent identifier used to identify a dataset for SWORD upload
-	 * @return an {@link Optional}. Will be <code>null</code> if <code>persistentURL</code> is not set.
+	 * Getter for the DOI String or other persistent identifier used to identify a dataset
+	 * @return an {@link Optional}.
+	 *
+	 * Will return empty optional if <code>persistentURL</code> is not set.
 	 */
-	public Optional<String> getDoiId (){
-		if(persistentUrl == null) {
+	public Optional<String> getDoiId() {
+		if (persistentUrl == null) {
 			return Optional.empty();
-		} else {
-			return Optional.of(getPersistentUrl().getPath().substring(1));
 		}
+  	return Optional.of(getPersistentUrl().getPath().substring(1));
 	}
+
 }

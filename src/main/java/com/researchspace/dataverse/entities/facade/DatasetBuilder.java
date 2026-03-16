@@ -4,7 +4,7 @@
 package com.researchspace.dataverse.entities.facade;
 
 import static java.util.Arrays.asList;
-import static org.apache.commons.lang.StringUtils.isEmpty;
+import static org.apache.commons.lang3.StringUtils.isEmpty;
 
 import com.researchspace.dataverse.entities.Citation;
 import com.researchspace.dataverse.entities.CitationField;
