@@ -6,7 +6,6 @@ package com.researchspace.dataverse.http;
 import com.researchspace.dataverse.api.v1.DataverseConfig;
 import com.researchspace.dataverse.entities.DataverseResponse;
 import com.researchspace.springrest.ext.LoggingResponseErrorHandler;
-import com.researchspace.springrest.ext.RestUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.http.HttpHeaders;
@@ -69,8 +68,8 @@ public abstract class AbstractOpsImplV1 {
 	
 	 <T> void handleError(ResponseEntity<DataverseResponse<T>> resp) {
 		log.debug("{}", resp.getBody());
-		if (RestUtil.isError(resp.getStatusCode())) {
-			String msg = String.format("Error  code returned %d with message [%s]", resp.getStatusCodeValue(),
+		if (resp.getStatusCode().isError()) {
+			String msg = String.format("Error  code returned %d with message [%s]", resp.getStatusCode().value(),
 					resp.getBody().getMessage());
 			log.error(msg);
 			throw new RestClientException(msg);

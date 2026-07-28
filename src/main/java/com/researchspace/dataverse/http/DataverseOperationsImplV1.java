@@ -150,7 +150,7 @@ public class DataverseOperationsImplV1 extends AbstractOpsImplV1 implements Data
 		
 		Dataset ds = new DatasetBuilder().build(facade);
 		String json = marshalDataset(ds.getDatasetVersion());
-		
+
 		HttpEntity<String> entity = createHttpEntity(json);
 		ParameterizedTypeReference<DataverseResponse<DatasetVersion>> type = new ParameterizedTypeReference<DataverseResponse<DatasetVersion>>() {
 		};

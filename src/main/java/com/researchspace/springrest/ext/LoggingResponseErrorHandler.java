@@ -43,6 +43,6 @@ public class LoggingResponseErrorHandler implements ResponseErrorHandler {
 
     @Override
     public boolean hasError(ClientHttpResponse response) throws IOException {
-        return RestUtil.isError(response.getStatusCode());
+        return response.getStatusCode().isError();
     }
 }

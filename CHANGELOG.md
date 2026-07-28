@@ -1,5 +1,8 @@
 Significant changes since 0.1.0
 
+3.0.0 2026-07-28
+- Spring 6 / Hibernate 6 / Jakarta migration (RSDEV-444)
+
 2.0.1 2026-03-19
 - feature: Add `relatedMaterial` when building Dataset
 
